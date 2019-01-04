@@ -1,0 +1,40 @@
+<app-loading *ngIf="loading" class="makeSpace"></app-loading>
+<div class="row makeSpace" *ngIf="!loading">
+  <div class="col-2">
+    <img [src]="artistaItem.images | noimage" class="img-thumbnail img-circle">
+  </div>
+  <div class="col">
+    <h1>{{artistaItem.name}}</h1>
+    <a href="{{artistaItem.external_urls.spotify}}">{{artistaItem.external_urls.spotify}}</a>
+  </div>
+  <div class="col-4 text-right">
+    <button type="button" class="btn btn-outline-danger" (click)="goHome()">Regresar</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead style="background-color:grey;">
+        <tr>
+          <th>Foto</th>
+          <th>Album</th>
+          <th>Cancion</th>
+          <th>Reproducir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let track of topTracksItem">
+          <th><img src="{{track.album.images | noimage}}" class="img-thumb"></th>
+          <th>{{track.album.name}}</th>
+          <th>{{track.name}}</th>
+          <th>
+            <!-- <audio [src]="track.preview_url" controls></audio> -->
+            <iframe [src]="track.uri | playTrack" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

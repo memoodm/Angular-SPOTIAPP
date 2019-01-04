@@ -1,0 +1,13 @@
+<app-loading *ngIf="loading"></app-loading>
+
+  <div class="card-columns">
+      <div class="card puntero" *ngFor="let cancionItem of nuevasCanciones" (click)="verArtista(cancionItem)">
+          <div id="cardItem">
+            <img class="card-img-top" src="{{cancionItem.images | noimage}}" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">{{cancionItem.name}}</h5>
+            <h5><span class="badge badge-info" *ngFor="let artista of cancionItem.artists">{{artista.name}}</span></h5>
+          </div>
+      </div>
+  </div>
+</div>
